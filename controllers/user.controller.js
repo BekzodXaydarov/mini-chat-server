@@ -62,7 +62,7 @@ exports.updateUser = async (req,res)=>{
         await user.update(req.body)
         res.status(200).json({
             success: true,
-            message: "details of user",
+            message: "user updated",
             user
         })
     }
@@ -82,8 +82,7 @@ exports.deleteUser = async (req,res)=>{
         await destroy()
         res.status(200).json({
             success: true,
-            message: "details of user",
-            user
+            message: "user deleted",
         })
     }
     catch(e){

@@ -1,5 +1,5 @@
 const { Router } = require("express")
-const router = Router()
+const router = Router();
 
 const UserController = require("../controllers/user.controller")
 const upload = require("../config/multer")

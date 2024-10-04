@@ -19,12 +19,11 @@ exports.createUser = async (req,res)=>{
 
 exports.getUser = async (req,res)=>{ 
     try{
-        res.status(200).send("get is successfully")
-        const user = await User.findAll()
+        const users = await s.findAll()
         res.status(200).json({
             success: true,
             message: "list of user",
-            user
+            users
         })
     }
     catch(e){

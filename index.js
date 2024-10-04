@@ -11,9 +11,6 @@ app.use(express.json())
 app.use(cors())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use('/',(req,res)=>{
-    res.status(200).send("Hello everyone")
-})
 
 const user = require("./routes/user.route")
 app.use("/api",user)

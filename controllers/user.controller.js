@@ -1,6 +1,6 @@
 const { User } = require("../models")
 const { UserValidation, UserLoginValidation } = require("../validations")
-
+const bcrypt = require("bcrypt")
 
 exports.createUser = async (req, res) => {
     if (!req.file) {

@@ -17,14 +17,15 @@ exports.createUser = async (req,res)=>{
     }
 }
 
-exports.getUser = async (req,res)=>{ 
+exports.getUser = (req,res)=>{ 
+    res.send("hello")
     try{
-        const user = await User.findAll()
-        res.status(200).json({
-            success: true,
-            message: "list of user",
-            user
-        })
+        // const user = await User.findAll()
+        // res.status(200).json({
+        //     success: true,
+        //     message: "list of user",
+        //     user
+        // })
     }
     catch(e){
         res.status(500).send(e.message)

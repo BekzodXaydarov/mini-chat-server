@@ -8,4 +8,9 @@ const UserSchema = Joi.object({
     photo: Joi.string().required(),
 })
 
-module.exports = { UserSchema }
+const UserLoginSchema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+})
+
+module.exports = { UserSchema, UserLoginSchema }

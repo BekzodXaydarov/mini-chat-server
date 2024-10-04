@@ -8,5 +8,6 @@ const Validation = (schema, body, res) => {
 }
 
 const UserValidation = (body, res) => Validation(UserSchema, body, res)
+const UserLoginValidation = (body,res)=>Validation(UserLoginValidation,body,res)
 
-module.exports = { UserValidation }
+module.exports = { UserValidation,UserLoginValidation }

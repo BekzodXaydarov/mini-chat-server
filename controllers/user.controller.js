@@ -1,5 +1,5 @@
 const { User } = require("../models")
-const { UserValidation } = require("../validations")
+const { UserValidation, UserLoginValidation } = require("../validations")
 
 
 exports.createUser = async (req, res) => {
@@ -93,6 +93,36 @@ exports.deleteUser = async (req, res) => {
             success: true,
             message: "user deleted",
         })
+    }
+    catch (e) {
+        res.status(500).send(e.message)
+    }
+}
+
+exports.loginUser = async (req, res) => {
+    UserLoginValidation(req.body, res)
+    try {
+        const { name, password } = req.body;
+        const user = await User.findOne({ name });
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Username or password is invalid",
+            });
+        }
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(401).json({
+                success: false,
+                message: "Username or password is invalid",
+            });
+        }
+        const token = generateToken(user)
+        return res.json({
+            success: true,
+            message: "Token",
+            token: token,
+        });
     }
     catch (e) {
         res.status(500).send(e.message)

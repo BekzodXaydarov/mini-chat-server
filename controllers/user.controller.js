@@ -102,8 +102,8 @@ exports.deleteUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
     UserLoginValidation(req.body, res)
     try {
-        const { name, password } = req.body;
-        const user = await User.findOne({ name });
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
         if (!user) {
             return res.status(401).json({
                 success: false,

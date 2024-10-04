@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt")
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("User", {
         id: {
@@ -27,6 +28,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+    })
+
+    User.beforeSave(async (user) => {
+        if (user.changed("password")) {
+            user.password = await bcrypt.hash(user.password, 10)
+        }
     })
 
     return User

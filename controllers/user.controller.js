@@ -17,15 +17,14 @@ exports.createUser = async (req,res)=>{
     }
 }
 
-exports.getUser = (req,res)=>{ 
-    res.send("hello")
+exports.getUser = async (req,res)=>{ 
     try{
-        // const user = await User.findAll()
-        // res.status(200).json({
-        //     success: true,
-        //     message: "list of user",
-        //     user
-        // })
+        const user = await User.findAll()
+        res.status(200).json({
+            success: true,
+            message: "list of user",
+            user
+        })
     }
     catch(e){
         res.status(500).send(e.message)
@@ -50,13 +49,13 @@ exports.getUserById = async (req,res)=>{
         res.status(500).send(e.message)
     }
 }
-exports.getUser = async (req,res)=>{
+exports.updateUser = async (req,res)=>{
     try{}
     catch(e){
         res.status(500).send(e.message)
     }
 }
-exports.getUser = async (req,res)=>{
+exports.deleteUser = async (req,res)=>{
     try{}
     catch(e){
         res.status(500).send(e.message)

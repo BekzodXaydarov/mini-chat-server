@@ -50,13 +50,42 @@ exports.getUserById = async (req,res)=>{
     }
 }
 exports.updateUser = async (req,res)=>{
-    try{}
+    UserValidation(req.body,res)
+    try{
+        const user = await User.findByPk(req.params.id)
+        if(!user){
+            res.status(404).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+        await user.update(req.body)
+        res.status(200).json({
+            success: true,
+            message: "details of user",
+            user
+        })
+    }
     catch(e){
         res.status(500).send(e.message)
     }
 }
 exports.deleteUser = async (req,res)=>{
-    try{}
+    try{
+        const user = await User.findByPk(req.params.id)
+        if(!user){
+            res.status(404).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+        await destroy()
+        res.status(200).json({
+            success: true,
+            message: "details of user",
+            user
+        })
+    }
     catch(e){
         res.status(500).send(e.message)
     }

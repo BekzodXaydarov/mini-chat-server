@@ -54,6 +54,11 @@ exports.getUserById = async (req, res) => {
     }
 }
 exports.updateUser = async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+    const imgUrl = `/uploads/${req.file.filename}`
+    UserValidation({ ...req.body, photo: imgUrl }, res)
     UserValidation(req.body, res)
     try {
         const user = await User.findByPk(req.params.id)
@@ -63,7 +68,7 @@ exports.updateUser = async (req, res) => {
                 message: "User not found"
             })
         }
-        await user.update(req.body)
+        await user.update({ ...req.body, photo: imgUrl })
         res.status(200).json({
             success: true,
             message: "user updated",

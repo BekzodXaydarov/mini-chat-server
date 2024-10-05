@@ -117,7 +117,7 @@ exports.loginUser = async (req, res) => {
                 message: "Username or password is invalid",
             });
         }
-        const token = generateToken(user)
+        const token = generateToken(user,process.env.USER_JWT_SECRET)
         return res.json({
             success: true,
             message: "Token",

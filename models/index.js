@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../config/database");
 
+const User = require("./user.model")(sequelize, Sequelize);
+const Admin = require("./admin.model")(sequelize, Sequelize);
 
-const User = require("./user.model")(sequelize, Sequelize)
-
-module.exports = { User }
+module.exports = { User, Admin };

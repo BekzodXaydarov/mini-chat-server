@@ -18,4 +18,9 @@ const AdminSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-module.exports = { UserSchema, UserLoginSchema, AdminSchema };
+const ChatSchema = Joi.object({
+  user_id: Joi.number().required(),
+  text: Joi.string().required(),
+})
+
+module.exports = { UserSchema, UserLoginSchema, AdminSchema, ChatSchema };

@@ -13,10 +13,13 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 const user = require("./routes/user.route")
-app.use("/api",user)
+app.use("/api", user)
 
 const admin = require("./routes/admin.route")
-app.use("/api",admin)
+app.use("/api", admin)
+
+const chat = require("./routes/chat.route")
+app.use("/api",chat)
 
 
 const PORT = process.env.PORT || 7777

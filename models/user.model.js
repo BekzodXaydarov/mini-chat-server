@@ -36,5 +36,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     })
 
+    User.associate = (models)=>{
+        User.hasMany(models.Chat,{
+            foreignKey: "user_id",
+            as: "chats"
+        })
+    }
+
     return User
 }

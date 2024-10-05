@@ -1,4 +1,5 @@
-const { User } = require("../models")
+const { User } = require("../models");
+const { generateToken } = require("../tokens");
 const { UserValidation, UserLoginValidation } = require("../validations")
 const bcrypt = require("bcrypt")
 
